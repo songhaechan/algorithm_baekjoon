@@ -37,7 +37,7 @@ class Main {
         }
         int pre = 0;
         for(int i=0; i<n; i++){
-            if(set.contains(i) && pre == arr[i]) continue;
+            if(set.contains(i) || pre == arr[i]) continue;
             set.add(i);
             tmp.add(arr[i]);
             pre = tmp.get(tmp.size()-1);
