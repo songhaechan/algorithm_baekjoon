@@ -22,11 +22,11 @@ class Main {
 
         Arrays.sort(arr);
 
-        seq(new ArrayList(),0);
+        seq(new ArrayList(),0,new HashSet());
         System.out.println(sb.toString());
     }
 
-    public static void seq(List<Integer> tmp,int start){
+    public static void seq(List<Integer> tmp,int start,Set<Integer> set){
         if(tmp.size() == m){
             tmp.forEach(a->{
                 sb.append(a);
@@ -35,9 +35,14 @@ class Main {
             sb.append('\n');
             return;
         }
-        for(int i=start; i<n; i++){
+        int pre = 0;
+        for(int i=0; i<n; i++){
+            if(set.contains(i) && pre == arr[i]) continue;
+            set.add(i);
             tmp.add(arr[i]);
-            seq(tmp,i);
+            pre = tmp.get(tmp.size()-1);
+            seq(tmp,i+1,set);
+            set.remove(i);
             tmp.remove(tmp.size()-1);
         }
     }
