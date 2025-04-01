@@ -22,16 +22,16 @@ class Main {
 
         int l = 0;
         int r = N - 1;
-        int max = Integer.MAX_VALUE;
+        int min = Integer.MAX_VALUE;
 
         int resultL = l;
         int resultR = r;
 
         while (l < r) {
-            if(max > Math.abs(solution[l]+solution[r])){
+            if(min > Math.abs(solution[l]+solution[r])){
                 resultL = l;
                 resultR = r;
-                max = Math.abs(solution[l]+solution[r]);
+                min = Math.abs(solution[l]+solution[r]);
             }
 
             if(solution[l] + solution[r] > 0){
